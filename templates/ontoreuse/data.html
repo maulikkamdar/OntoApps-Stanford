@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OntoApps @ Stanford</title>    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Maulik R. Kamdar">
+    <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+    <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/kinetic.min.js"></script>
+    <script> 
+      $(function(){
+        $("#headercontent").load("/header"); 
+      });
+    </script>
+  </head>
+   
+  <body>
+   
+    <div class="container-fluid">
+      <div id = "headercontent"></div>
+   
+      <div class="header subheader">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li><a href="/ontoreuse">Check Similar Terms</a></li>
+            <li><a href="/ontoreuse/reuseViz">Reuse Dependencies Visualization</a></li>
+            <li><a href="/ontoreuse/overlapViz">Overlap Visualization</a></li>
+            <li><a href="/ontoreuse/bplogs">BioPortal Import Plugin Log Analysis Visualization</a></li>
+            <li><a href="/ontoreuse/data">Data Files</a></li>
+            <li><a href="/ontoreuse/about">About</a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">Ontology Term Overlap and Reuse</h3>
+      </div>
+
+      <div class="tabbable" id="resulttabs">
+        <ul class="nav nav-tabs" id="resultTabIds">
+          <li class="active fade in"><a href="#reuse" id="reuseTab" data-toggle="tab">Term Reuse</a></li>
+          <li class="fade in"><a href="#overlap" id="overlapTab" data-toggle="tab">Term Overlap</a></li>
+          <li class="fade in"><a href="#clustering" id="clusteringTab" data-toggle="tab">Clustering</a></li>
+          <li class="fade in"><a href="#bplogs" id="bplogsTab" data-toggle="tab">BioPortal Import Plugin Logs</a></li>
+        </ul>
+      </div>
+
+      <br>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="reuse">
+          <div class="container-fluid" id="maindataDiv">
+            <div class="row-fluid">
+                <div class="span12">
+                    <fieldset><legend>Term Reuse Statistics</legend>
+                        <h5><a href="../../static/data/download/ExplicitReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Explicitly Reused Terms between Multiple Ontologies using the Same Term Internationalized Resource Identifier (IRI)</h5></a><hr>
+                        <h5><a href="../../static/data/download/ExplicitReuseWoOntologyReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Explicitly Reused Terms after removing Terms imported when Ontologies are reused in entirety</h5></a><hr>
+                        <h5><a href="../../static/data/download/SortedExplicitReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Ontologies that explicitly reuse terms from other Ontologies</h5></a><hr>
+                        <h5><a href="../../static/data/download/SortedExplicitIsReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Ontologies whose terms are explicitly reused by other Ontologies</h5></a><hr>
+                        <h5><a href="../../static/data/download/UMLSCUIReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Terms Shared between multiple UMLS Terminologies using the Same Concept Unique Identifier (CUI)</h5></a><hr>
+                        <h5><a href="../../static/data/download/SortedOutgoingXrefs.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Ontologies that <i>xref</i>-link to terms in other Ontologies</h5></a><hr>
+                        <h5><a href="../../static/data/download/SortedIncomingXrefs.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Ontologies whose terms are <i>xref</i>-linked to by other Ontologies</h5></a><hr>
+                    </fieldset></div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="overlap">
+          <div class="container-fluid" id="maindataDiv">
+            <div class="row-fluid">
+                <div class="span12">
+                    <fieldset><legend>Term Overlap Modules</legend>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <fieldset><legend>Term Overlap Statistics (Naive)</legend>
+                        <h5><a href="../../static/data/download/TermOverlap.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Total Term Overlap</h5></a><hr>
+                        <h5><a href="../../static/data/download/TermOverlapwoExpReuse.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Term Overlap without Explicitly Reused Terms</h5></a><hr>
+                        <h5><a href="../../static/data/download/TermOverlapwoExpReuseWoCUI.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Term Overlap without Explicitly Reused Terms and Terms mapped to the same UMLS CUI</h5></a><hr>
+                        <h5><a href="../../static/data/download/TermOverlapNormalizedTermURI.xlsx"><img src="../../static/img/excel.png" width="20px" height="20px">&nbsp;&nbsp;Term Overlap after Normalizing Term IRIs</h5></a><hr>
+                    </fieldset></div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="clustering" align="center"><img src="../../static/img/semsim.png"><hr>Data Files Coming soon ... </div>
+        <div role="tabpanel" class="tab-pane" id="bplogs">
+        <hr>Data Files Coming soon ... 
+        </div>
+        
+      </div>
+
+      <footer class="footer">
+        <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+      </footer>
+      
+    </div>
+  </body>
+</html>

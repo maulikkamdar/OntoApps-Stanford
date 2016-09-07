@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OntoApps @ Stanford</title>    
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Maulik R. Kamdar">
+    <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+    <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/js/libraries/sigma.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/d3.v3.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/sigma.forceatlas2.js"></script>
+    <script> 
+      $(function(){
+        jQuery("#headercontent").load("/header"); 
+      });
+    </script>
+  </head>
+   
+  <body>
+   
+    <div class="container-fluid">
+      <div id = "headercontent"></div>
+   
+      <div class="header subheader">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li><a href="/ontoreuse">Check Similar Terms</a></li>
+            <li><a href="/ontoreuse/reuseViz">Reuse Dependencies Visualization</a></li>
+            <li><a href="/ontoreuse/overlapViz">Overlap Visualization</a></li>
+            <li><a href="/ontoreuse/bplogs">BioPortal Import Plugin Log Analysis Visualization</a></li>
+            <li><a href="/ontoreuse/data">Data Files</a></li>
+            <li><a href="/ontoreuse/about">About</a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">Ontology Term Overlap and Reuse</h3>
+      </div>
+   
+      <div class="row-fluid">
+        <div class="span12" align="center">
+        <h4>Find similar terms in BioPortal for a term of interest using a string (e.g. Cardiac Muscle, Bryophyllum) or an IRI (e.g. http://mouse.brain-map.org/atlas/index.html#CN)</h4>
+        <form class="form-inline" id="formSim">
+          <label for="termString" class="sr-only">Term of Interest</label>
+          <input type="text" name="termString" id="termString" class="form-control" placeholder="Term of Interest" required autofocus> &nbsp;&nbsp;
+          <input type="hidden" name="degree" value="2"><button id="btnCheck" class="btn btn-primary" type="button">Find</button>
+        </form><br>
+        </div>
+      </div>
+      
+      <hr>
+      <div class="tabbable" id="datatabs">
+        <ul class="nav nav-tabs" id="tabIds">
+          <li class="active fade in"><a href="#table" data-toggle="tab">Related Terms</a></li>
+          <li class="fade in"><a href="#graph" id="termOverlapTab" data-toggle="tab">Graph</a></li>
+        </ul>
+      </div>
+
+      <br>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="table">
+          <table width="100%" id="outputTable" class="outputTable">
+            <tr><th class="span2">IRI</th><th class="span2">Ontologies</th><th class="span2">Labels</th><th class="span2">Exact Synonyms</th><th class="span2">Related Synonyms</th><th class="span2">Other Synonymns</th></tr>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="graph"><div class="sigmaViz-parent" id="termOverlapView-parent"><div id="termOverlapView" class="sigmaViz"></div></div></div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+      </footer>
+     
+    </div>
+    <script type="text/javascript" src="../static/js/libraries/sigma.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/sigma.forceatlas2.js"></script>
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <script type="text/javascript" src="../static/js/sigmaforce.js"></script>
+  </body>
+</html>
