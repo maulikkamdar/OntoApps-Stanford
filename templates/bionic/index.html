@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>BiOnIC - Catalog of User Interactions with Biomedical Ontologies</title>
+    <!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../static/css/libraries/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/libraries/jquery-ui.min.css" rel="stylesheet">
+      <link href="../static/css/libraries/jumbotron-narrow.css" rel="stylesheet">
+      <link href="../static/css/vision/main.css" rel="stylesheet">
+      <link href="../static/css/vision/search.css" rel="stylesheet">
+      <style>
+        .background {
+          fill: #eee;
+        }
+        line {
+          stroke: #fff;
+        }
+        text.active {
+          fill: red;
+        }
+        .imgPadding {
+          background-color: #FFFFFF;
+          border: 1px solid #C0C0C0;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          float: left;
+          margin: 0 20px 12px 0;
+          padding: 4px;
+        }
+      </style>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="author" content="Maulik R. Kamdar">
+      <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+      <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+      <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../static/js/libraries/d3.v3.min.js"></script>
+      <script> 
+        $(function(){
+          jQuery("#headercontent").load("/header"); 
+        });
+      </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id = "headercontent"></div>
+   
+      <div class="header subheader">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li><a href="/bionic">About</a></li>
+            <li><a href="/bionic#stats">Datasets statistics</a></li>
+            <li><a href="/bionic#schema">BiOnIC Schema</a></li>
+            <li><a href="/bionic#applications">Applications</a></li>
+            <li><a href="/bionic/datasets">Download</a></li>
+            <li><a href="/bionic/license">License</a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">BiOnIC - Catalog of User Interactions with Biomedical Ontologies</h3>
+      </div>
+
+
+      <div class="row-fluid">
+        <a name="about"><h1 align="center">About BiOnIC</h1></a>
+        <p align="justify" style="font-size: 16px; padding: 10px">BiOnIC is a catalog of aggregated statistics of user clicks, queries, and reuse counts for access to over 200 biomedical ontologies. BiOnIC also provides anonymized sequences of classes accessed by users over a period of four years. To generate the statistics, we processed the access logs of BioPortal, a large open biomedical ontology repository. We publish the BiOnIC data using DCAT and SKOS metadata standards. The BiOnIC catalog has a wide range of applicability, which we demonstrate through its use in three different types of applications. To our knowledge, this type of interaction data stemming from a real-world, large-scale application has not been published before. <br><br></p>
+        <h5 align="center"><a href="https://iswc2017.ai.wu.ac.at/wp-content/uploads/papers/MainProceedings/389.pdf" target="_blank">Download Paper</a> || <a href="https://www.slideshare.net/thesilverhelix/bionic-iswc">Download PresentationSlides</a></h5>
+        <hr>
+      </div> 
+      <div class="row-fluid">
+        <a name="stats"><h1 align="center">Dataset Characteristics</h1></a>
+        <p align="justify" style="font-size: 16px; padding: 10px">
+          <table width="100%">
+            <tr>
+              <td width="50%"><h3 align="center">User level features</h3><hr>
+              <td width="50%"><h3 align="center">Ontology level features</h3><hr>
+            </tr>
+            <tr>
+              <td align="center"><p align="left"> We compute the summary statistics for the following user-level features:- total and unique entities in a sequence, and total time of interaction. </p>
+              <td align="center"><p align="left"> We compute the following ontology-level features:- % of classes accessed using WebUI and API, size of the ontologies, and number of unique users for each mode, as well as Spearman correlation between the classes browsed using WebUI and queried using API. 
+            <tr>
+              <td align="center"><a href="../static/img/bionic/bionic_stats1.png" target="_blank"><img src="../static/img/bionic/bionic_stats1.png" class="imgPadding" width="500px" style="float:center"></a>
+              <td align="center"><a href="../static/img/bionic/bionic_stats2.png" target="_blank"><img src="../static/img/bionic/bionic_stats2.png" class="imgPadding" width="500px" style="float:center"></a>
+            </tr>
+          </table>
+        </p>
+        <hr>
+      </div>
+      <div class="row-fluid">
+        <a name="schema"><h1 align="center">BiOnIC Schema</h1></a>
+        <hr>
+      </div>
+      <div class="row-fluid">
+        <div class="span4">
+        <center><a href="../static/img/bionic_model.png"><img src="../static/img/bionic/bionic_model.png" class="imgPadding"></a></center>
+        </div>
+        <div class="span8">
+          <p align="justify" style="font-size: 16px; padding: 10px">We used elements from the <a href="https://www.w3.org/TR/swbp-skos-core-spec" target="_blank">Simple Knowledge Organization System (SKOS)</a>, the <a href="https://www.w3.org/TR/vocab-dcat/" target="_blank">Data Catalog vocabulary (DCAT)</a>, and the <a href="https://www.w3.org/TR/prov-o/" target="_blank">Provenance Ontology (PROV-O)</a> for our vocabulary schema.</p>
+          <p align="justify" style="font-size: 16px; padding: 10px"><b>Class Statistics Datasets</b>. The <span style="font-family: Courier">bionic:StatDataset</span> class represents datasets that publish the aggregated statistics for each ontology class. The <span style="font-family: Courier">bionic:ClassInfo</span> captures the structural characteristics of the class. The <span style="font-family: Courier">bionic:ReuseCount</span> represents the number of ontologies that reuse a specific ontology class and the type of reuse (IRI, CUI). The <span style="font-family: Courier">bionic:RequestCount</span> represents the total and unique counts of clicks and queries for each ontology class. These RDF datasets can be queried in conjunction with the ontologies and ontology mappings in BioPortal using <span style="font-family: Courier">owl:Class</span> IRIs. </p>
+          <p align="justify" style="font-size: 16px; padding: 10px"><b>User Interaction Sequences Datasets</b>. The <span style="font-family: Courier">bionic:SeqDataset</span> class represents datasets of user interactions sequences for a particular ontology. The anonymized user identifiers are represented as <span style="font-family: Courier">prov:Agent</span> instances. A sequence of user interactions - captured as an instance of <span style="font-family: Courier">bionic:Sequence</span> - is represented as a list of <span style="font-family: Courier">bionic:SeqEntity</span> instances linked via the <span style="font-family: Courier">bionic:nextEntity</span> properties. <span style="font-family: Courier">bionic:Sequence</span> and <span style="font-family: Courier">bionic:SeqEntity</span> are subclasses of <span style="font-family: Courier">skos:Collection</span> and <span style="font-family: Courier">skos:Concept</span> respectively</p>
+        </div>
+      </div> 
+      <hr>
+      <div class="row-fluid">
+        <a name="applications"><h1 align="center">Applications</h1></a>
+        <hr>
+      </div> 
+      <div class="row-fluid">
+        <div class="span4">
+          <center><img src="../static/img/bionic/app1.png" class="imgPadding"></center>
+        </div>
+        <div class="span8">
+          <h3 align="left">Characterizing User Behaviors</h3>
+          <hr>
+          <p align="justify" style="font-size: 16px; padding: 10px">We used the BiOnIC WebUI and API sequence datasets to model the browsing behavior of BioPortal users using memoryless Markov chains. We represented the user behavior as a vector, and we clustered these vectors using <i>k</i>-means. We were able to identify seven distinct browsing types, all relying on different functionality provided by BioPortal. For example, Search Explorers extensively use the search functionality while Ontology Tree Explorers mainly rely on the class hierarchy for exploring ontologies. Further, we show that specific characteristics of ontologies influence the way users explore and interact with the website. </p>
+          <p align="justify" style="font-size: 16px; padding: 10px"><b>Reference:</b> Simon Walk, Lisette Esín-Noboa, Denis Helic, Markus Strohmaier, and Mark A. Musen. 2017. How Users Explore Ontologies on the Web: A Study of NCBO's BioPortal Usage Logs. <i>In Proceedings of the 26th International Conference on World Wide Web (WWW '17)</i>, 775-784. <a href="https://doi.org/10.1145/3038912.3052606" target="_blank">DOI</a></p>
+        </div>
+      </div>
+      <hr>
+      <div class="row-fluid">
+        <div class="span4">
+          <center><img src="../static/img/bionic/app2.png" class="imgPadding"></center>
+        </div>
+        <div class="span8">
+          <h3 align="left">Identifying Structural Exploration and Querying patterns in Ontologies</h3>
+          <hr>
+          <p align="justify" style="font-size: 16px; padding: 10px">We used the BiOnIC statistics on user clicks, queries and reuse counts for each class in every ontology, and did not find a significant Spearman correlation between class access and reuse. We also investigated if user browsing behaviors through the BioPortal WebUI and the API correlate with each other. We developed the PolygOnto visualization that exploits the class hierarchy to reveal regions in an ontology where users tend to explore and query more. We observe two types of exploration patterns: <i>i)</i> <i>Triangles:</i> 1 parent -> 2 child classes, and <i>ii)</i> <i>Inverted Triangles:</i> 1 child -> 2 parent classes. We also observe that classes in the lower levels of the  class hierarchy are rarely explored or queried by users.</p>
+          <p align="justify" style="font-size: 16px; padding: 10px"><b>Reference:</b> Maulik R. Kamdar, Simon Walk, Tania Tudorache, and Mark A. Musen. 2017. Visualizing Request and Reuse Data across Biomedical Ontologies. <i>Journal of Web Semantics</i>, (under review). <a href="https://stanford.edu/~maulikrk/papers/visreqs" target="_blank">Download</a></p>
+        </div>
+      </div>
+      <hr>
+      <div class="row-fluid">
+        <div class="span4">
+          <center><img src="../static/img/bionic/app3.png" class="imgPadding"></center>
+        </div>
+        <div class="span8">
+          <h3 align="left">Comparing BioPortal Access Modes and Temporal Influences</h3>
+          <hr>
+          <p align="justify" style="font-size: 16px; padding: 10px">We use Fisher's exact test over the BiOnIC aggregative statistics, and multiple hypotheses testing, to investigate if users access certain ontology classes significantly more when compared between different access modes and different time periods. The VisIOn Web application provides fascinating insights in the influence of access modes and time on information retrieval in ontologies. For example, as seen in the word cloud perspective of VisIOn, more users queried the Gene Ontology using the BioPortal API for classes related to <i>pigmentation</i> in 2015, when compared to 2016. Certain classes (e.g., <i>protein transmembrane transporter activity</i>) are requested multiple times using the BioPortal API, but are never requested using the BioPortal WebUI. Moreover, by observing the VisIOn word cloud and the volcano plot perspectives, we can observe the rise of queries for certain classes related to <i>Zika virus</i> and <i>Ebolavirus</i> in several disease ontologies. </p>
+          <p align="justify" style="font-size: 16px; padding: 10px"><a href="http://onto-apps.stanford.edu/vision" target="_blank">Visit VisIOn</a></p>
+        </div>
+      </div>
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+        <footer class="footer">
+            <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

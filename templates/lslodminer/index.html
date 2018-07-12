@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OntoApps @ Stanford</title>
+    <link href="../static/css/libraries/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/libraries/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/libraries/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/css/token-input.css" rel="stylesheet" type="text/css" />
+    <link href="../static/css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Maulik R. Kamdar">
+    <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+    <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../static/js/libraries/cytoscape.min.js"></script>
+    <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+    <script> 
+      $(function(){
+        $("#headercontent").load("/header"); 
+      });
+    </script>
+    <style type="text/css">
+      .frame-area {
+        display: block;
+        width: 100%;  /* RESPONSIVE WIDTH */
+        min-height: 900px;
+        overflow: hidden;  /* EDIT TO hidden FOR NO SCROLLBAR */
+        border: #999999 1px solid;
+        margin: 0px;
+        padding: 0px;
+        }
+
+    </style>
+  </head>
+   
+  <body>
+   
+    <div class="container-fluid">
+      <div id = "headercontent"></div>
+   
+      <div class="header subheader">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <!--<li><a href="/prism/about">About</a></li>-->
+          </ul>
+        </nav>
+        <h4 class="text-muted">LSLOD - PhLeGrA Miner</h4>
+      </div>
+
+      <div class="row-fluid">
+           <div class="span12" align="center"><h3>The figures and tables are from an unpublished manuscript, which will be submitted next month: An Empirical Meta-Analysis of the Life Sciences (Linked?) Open Data</h3> <h5>The associated application to search and visualize the different IRI representations used in these datasets, and other characteristics will also be launched next month! </h5><hr><hr></div>
+        </div>
+      <div class="row-fluid">
+           <div class="span4" align="center"><b>Mined Linked Data Sources</b> <hr><img width="1000px" src="../../static/img/lslodminer/lslodsrc.png"></div>
+           <div class="span4" align="center"><b>Different IRI representations across biomedical ontologies (reused from <a href="http://www.semantic-web-journal.net/content/systematic-analysis-term-reuse-and-term-overlap-across-biomedical-ontologies-0">SWJ paper</a>)</b> <hr><img width="1000px" src="../../static/img/lslodminer/tab1.png"><hr><hr><b>Different URI representations across biomedical Linked Data sources</b> <hr><img width="1000px" src="../../static/img/lslodminer/tab2.png"></div>
+           <div class="span4" align="center"><b>Reuse of content from existing ontologies and vocabularies</b> <hr><img width="1000px" src="../../static/img/lslodminer/dist.png"></div>
+        </div>
+        
+         
+        <footer class="footer">
+          <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+        </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+hr {
+    margin: 10px 0;
+}
+
+.outputTable {
+	border-bottom: 1px solid black
+}
+
+.loaded-div {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.overlay_window {
+    position: relative;
+}
+
+.plot_window {
+    position: absolute;
+}
+
+.ct_slider {
+    width: 180px;
+    text-align: center;
+}
+
+.overlay_toolbar {
+    z-index: 5;
+    position: absolute;
+    width: 200px;
+    cursor: move;
+    background: white;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -moz-box-shadow: 0px 0px 5px #888;
+    -webkit-box-shadow: 0px 0px 5px #888;
+    box-shadow: 0px 0px 5px #888; 
+    padding: 10px;
+    top: 50px;
+    right: 50px;
+    height: 520px;
+}
+
+
+.splashScreenExplorer {
+    margin: auto;
+    width:750px;
+    position: relative;
+    height: 300px;
+    top: -1000px;
+    z-index:1101;
+    background: white;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -moz-box-shadow: 0px 0px 5px #888;
+    -webkit-box-shadow: 0px 0px 5px #888;
+    box-shadow: 0px 0px 5px #888;    
+}
+
+.sigmaViz-parent, .explorerdiv{
+    position: relative;
+    border: 1px solid black;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    height: 950px;
+    -moz-box-shadow: 0px 0px 10px #888;
+    -webkit-box-shadow: 0px 0px 10px #888;
+    box-shadow: 0px 0px 10px #888;
+}
+
+.panel-box{
+    height: 300px;
+    -moz-box-shadow: 0px 0px 10px #888;
+    -webkit-box-shadow: 0px 0px 10px #888;
+    box-shadow: 0px 0px 10px #888;
+}
+
+.sigmaViz {
+    height:300px;
+    width:100%;
+}
+
+.canvasplot{
+    position: relative;
+    border: 1px solid black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #fff;
+}
+
+.emph {
+    border: 1px solid black;
+    margin-top: 15px;
+     -moz-box-shadow: 0px 0px 10px #888;
+    -webkit-box-shadow: 0px 0px 10px #888;
+    box-shadow: 0px 0px 10px #888;
+    border-radius: 5px;
+}
+
+.select-div {
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.data_info {
+    padding-left: 5px;
+    margin-left: 5px;
+    text-align: right;
+    padding-top: 5px;
+}
+
+.select-widget {
+    display: block;
+    height: 31px;
+    width: 180px;
+    padding: 0 12px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-checks {
+    margin: 0px;
+}
+
+#int_classes {
+    width: 120px;
+}
+
+.header {
+    margin-bottom: 0px;
+}
+
+.subheader {
+    margin-bottom: 30px;
+}
+
+.subheader h4{
+    padding-top: 10px;
+}
+
+#cy {
+  height: 800px;
+  width: 100%;
+}

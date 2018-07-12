@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>BiOnIC - Catalog of User Interactions with Biomedical Ontologies</title>
+    <!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="../static/css/libraries/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/libraries/jquery-ui.min.css" rel="stylesheet">
+      <link href="../static/css/libraries/jumbotron-narrow.css" rel="stylesheet">
+      <link href="../static/css/vision/main.css" rel="stylesheet">
+      <link href="../static/css/vision/search.css" rel="stylesheet">
+      <style>
+        .background {
+          fill: #eee;
+        }
+        line {
+          stroke: #fff;
+        }
+        text.active {
+          fill: red;
+        }
+      </style>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="author" content="Maulik R. Kamdar">
+      <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+      <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+      <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+      <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+      <script type="text/javascript" src="../static/js/libraries/d3.v3.min.js"></script>
+      <script> 
+        $(function(){
+          jQuery("#headercontent").load("/header"); 
+        });
+      </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id = "headercontent"></div>
+   
+      <div class="header subheader">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li><a href="/bionic">About</a></li>
+            <li><a href="/bionic#stats">Datasets statistics</a></li>
+            <li><a href="/bionic#schema">BiOnIC Schema</a></li>
+            <li><a href="/bionic#applications">Applications</a></li>
+            <li><a href="/bionic/datasets">Download</a></li>
+            <li><a href="/bionic/license">License</a></li>
+          </ul>
+        </nav>
+        <h4 class="text-muted">BiOnIC - Catalog of User Interactions with Biomedical Ontologies</h3>
+      </div>
+
+
+      <div class="row-fluid">
+        <div class="span4"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" target="_blank"><img src="../static/img/by-nc-sa.png" class="imgPadding"></a></div>
+        <div class="span8">
+          <h1>Attribution-NonCommercial-ShareAlike</h1>
+          <h2>CC BY-NC-SA</h2>
+          <h3><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" target="_blank">(Legal Code)</a>&nbsp;&nbsp;<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">(License Deed)</a></h3>
+          <p align="justify" style="font-size: 16px; padding: 10px">This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.</p>
+        </div>
+      </div> 
+      <div class="row-fluid">
+        <div class="span12">
+        <footer class="footer">
+            <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

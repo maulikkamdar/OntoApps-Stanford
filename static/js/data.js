@@ -2,15 +2,17 @@ function vizBPLogs(canvasId, fileType) {
     var width = jQuery("#"+ canvasId).width();
     //console.log(width)
     var height = 800;
-    var totalOntos = 8;
-    var ontoSeparation = 50;
-    var eachOntoWidth = (width-100-(totalOntos)*ontoSeparation)/totalOntos;
+    var totalOntos = 4;
+    var ontoSeparation = 300;
+    //var eachOntoWidth = (width-100-(totalOntos)*ontoSeparation)/totalOntos;
+    var eachOntoWidth = 300
     var barWidth = eachOntoWidth/4;
     var maxBarHeight = height-600;
     var maxValue = maxBarHeight/4;
     var maxStructDepth = maxBarHeight/11.5;
     var offsetH = 80;
-    var structMinWidth = eachOntoWidth/6;
+    var structMinWidth = eachOntoWidth/10;
+    var negator = Math.E
 
     jQuery.ajax({
         url: fileType,
@@ -129,7 +131,7 @@ function vizBPLogs(canvasId, fileType) {
     staticLayer.add(xAxis);
     staticLayer.add(xAxisLabel);
     trackCanvas.add(staticLayer);
-    trackCanvas.add(legendLayer);
+    //trackCanvas.add(legendLayer);
 
     function getLegendText(x, y, width, text) {
             var legendText = new Kinetic.Text({
@@ -244,8 +246,8 @@ function vizBPLogs(canvasId, fileType) {
         for (key in json) {
             var ontoLabel = new Kinetic.Text({
                 x: completedLength,
-                y: height-offsetH,
-                text: key,
+                y: height-360, //height-offsetH
+                text: json[key]["onto"],
                 fontSize: 20,
                 fontFamily: 'Calibri',
                 fontStyle: "bold",
@@ -307,7 +309,7 @@ function vizBPLogs(canvasId, fileType) {
             vizDepth = json[key]["maxDepth"] < 22 ? json[key]["maxDepth"] : 21;
             for (i = 0; i < vizDepth; i++) {
                 var minorGridline = new Kinetic.Line({
-                    points: [completedLength, 30+maxStructDepth*i, completedLength+eachOntoWidth, 30+maxStructDepth*i],
+                    points: [completedLength, 30+maxStructDepth*i, completedLength+eachOntoWidth*2, 30+maxStructDepth*i],
                     stroke: '#333',
                     strokeWidth: 2,
                     lineJoin: 'round',
@@ -332,39 +334,51 @@ function vizBPLogs(canvasId, fileType) {
 
             var midPoint = completedLength + eachOntoWidth/2;
 
+            function normalize(val, max_val) {
+                a = (points[p]*eachOntoWidth)/max_val
+                return a
+            }
+
+
             for (depth in json[key]["noStructs"]) {
                 structs = json[key]["noStructs"][depth];
                 for (k in structs) {
                     structMismatch = false
                     points = structs[k]["points"];
+                    maxl = Math.log10(structs[k]["maxl"]);
                     renderedPoints = [];
                     for (p in points) {
                         if (p%2 == 0) {
                             if (points[p] > 0)
-                                renderedPoints.push(midPoint + Math.log10(points[p])*structMinWidth)
+                                renderedPoints.push(midPoint + Math.log(points[p]+negator)*structMinWidth)
+                                //renderedPoints.push(midPoint + normalize(Math.log10(points[p]), maxl))
                             else if (points[p] < 0)
-                                renderedPoints.push(midPoint - Math.log10(Math.abs(points[p]))*structMinWidth)
+                                renderedPoints.push(midPoint - Math.log(Math.abs(points[p])+negator)*structMinWidth)
+                                //renderedPoints.push(midPoint + normalize(Math.log10(Math.abs(points[p])), maxl))
                             else
                                 renderedPoints.push(midPoint)
                         } else {
-                            if (points[p] == 0)
-                                structMismatch = true
-                            var yP = structMismatch ? points[p] : points[p]-1;
+                            //if (points[p] == 0)
+                            //    structMismatch = true
+                            //var yP = structMismatch ? points[p] : points[p]-1;
+                            var yP = points[p]
                             renderedPoints.push(30+yP*maxStructDepth)
                         }
                     }
                     //B232B2
                     //console.log(renderedPoints);
-                    console.log(renderedPoints)
+                    if(structs[k]["session"].trim() == json[key]["onto"].trim()){
+                        console.log("here")
+                    }
                     var struct = new Kinetic.Line({
                         points: renderedPoints,
                         stroke: "#000",
-                        fill: '#99FFFF',
+                        fill: structs[k]["session"].trim() == json[key]["onto"].trim() ? "#FF0000" : '#99FFFF',
                         closed: true,
                         strokeWidth: 2,
                         opacity: 0.2,
                         lineJoin: 'round',
-                        tension: 1
+                        tension: 0
                     });
                     //struct.closed(true);
                     structGroup.add(struct);
@@ -391,10 +405,10 @@ function vizBPLogs(canvasId, fileType) {
             totalBarGroup.add(totalBar);
         }
         
-        staticLayer.add(sessionBarGroup);
-        staticLayer.add(singleBarGroup);
-        staticLayer.add(structBarGroup);
-        staticLayer.add(totalBarGroup);
+        //staticLayer.add(sessionBarGroup);
+        //staticLayer.add(singleBarGroup);
+        //staticLayer.add(structBarGroup);
+        //staticLayer.add(totalBarGroup);
         staticLayer.add(xLabelGroup);
         staticLayer.add(structGridLines);
         staticLayer.add(structGroup);
@@ -405,6 +419,8 @@ function vizBPLogs(canvasId, fileType) {
 
 //jQuery("#bplogsTab").click(function() {
  //   setTimeout(1000);
-    vizBPLogs("trackCanvasObo", "logStatsObo")
-    vizBPLogs("trackCanvasUmls", "logStatsUmls")
+    //vizBPLogs("trackCanvasObo", "logStatsObo")
+    //vizBPLogs("trackCanvasUmls", "logStatsUmls")
+    vizBPLogs("trackCanvasObo", "logStatsBP")
+    //vizBPLogs("trackCanvasUmls", "logStatsBP2")
 //});
