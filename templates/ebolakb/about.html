@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>OntoApps @ Stanford</title>
-    <link href="../static/css/libraries/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="../static/css/libraries/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="../static/css/libraries/jumbotron-narrow.css" rel="stylesheet">
-    <link href="../static/css/token-input.css" rel="stylesheet" type="text/css" />
-    <link href="../static/css/main.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="author" content="Maulik R. Kamdar">
-    <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
-    <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
-    <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../static/js/libraries/cytoscape.min.js"></script>
-    <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
-    <script> 
-      $(function(){
-        $("#headercontent").load("/header"); 
-      });
-    </script>
-  </head>
-   
-  <body>
-   
-    <div class="container-fluid">
-      <div id = "headercontent"></div>
-   
-      <div class="header subheader">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li><a href="/genomesnip/about">About</a></li>
-          </ul>
-        </nav>
-        <h4 class="text-muted">An Ebola Virus-centered Knowledge Base - Coming soon .... </h4>
-      </div>
-
-    <div class="row-fluid">
-            <div class="span12" align="center"><b>Paper:</b> <a href='http://database.oxfordjournals.org/content/2015/bav049.full' target='_blank'>An Ebola Virus-centered Knowledge Base</a><hr>
-              <b>Link:</b> <a href='http://ebola.semanticscience.org/' target='_blank'>http://ebola.semanticscience.org/</a><hr><img width="1000px" src="../../static/img/ebola.png"></div>
+    <head>
+        <title>OntoApps @ Stanford || An Ebola Virus-centered Knowledge Base</title>
+        <link href="../static/css/libraries/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../static/css/libraries/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="../static/css/libraries/jumbotron-narrow.css" rel="stylesheet">
+        <link href="../static/css/token-input.css" rel="stylesheet" type="text/css" />
+        <link href="../static/css/main.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="author" content="Maulik R. Kamdar">
+        <meta name="keywords" content="ontologies, logs, engineering, biomedical, classes, term, reuse, overlap, visualization, graph, search" />
+        <script src="../static/js/libraries/jquery-1.10.1.min.js" type="text/javascript"></script>
+        <script src="../static/js/libraries/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../static/js/libraries/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../static/css/ebolakb/style.css" type="text/css">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171064477-1"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'UA-171064477-1');
+        </script>
+        <script> 
+            $(function(){
+                $("#headercontent").load("/header"); 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id = "headercontent"></div>
+            <div class="header subheader">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li><a href="/ebolakb">Dashboard</a></li>
+                    </ul>
+                    <ul class="nav nav-pills pull-right">
+                        <li><a href="/ebolakb/howto">How-to Navigate Dashboard</a></li>
+                    </ul>
+                    <ul class="nav nav-pills pull-right">
+                        <li><a href="/ebolakb/about">About</a></li>
+                    </ul>
+                </nav>
+                <h4 class="text-muted">An Ebola Virus-centered Knowledge Base</h4>
+            </div>
         </div>
-        <footer class="footer">
-          <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" align="center">
+                    <a href="../static/img/ebolakb/process.png" target="_blank"> <img src="../static/img/ebolakb/process.png" width="100%" class="imgPadding"></a>
+                </div>
+                <div class="span9" align="center">
+                    <p align="justify">
+                        Ebola virus (EBOV), of the family Filoviridae viruses, is a NIAID category A, lethal human pathogen. It is responsible for causing Ebola virus disease (EVD) that is a severe hemorrhagic fever and has a cumulative death rate of 41% in the ongoing epidemic in West Africa. There is an ever-increasing need to consolidate and make available all the knowledge that we possess on EBOV, even if it is conflicting or incomplete. This would enable biomedical researchers to understand the molecular mechanisms underlying this disease and help develop tools for efficient diagnosis and effective treatment. 
+                        We have developed the Ebola virus-centered Knowledge Base (Ebola-KB) using Linked Data and Semantic Web Technologies. We retrieve and aggregate knowledge from several open data sources, web services and biomedical ontologies. This knowledge is transformed to RDF, linked to the <a href="http://bio2rdf.org" target="_blank"><b>Bio2RDF</b></a> datasets. Ebola-KB can also be explored using an interactive <a href="/ebolakb" target="_blank"><b>Dashboard</b></a> visualizing the different perspectives of this integrated knowledge. 
+                    </p>
+                    <p align="justify">
+                        <b>Download:</b> <a href="../static/data/ebolakb/ebola_main.ttl" target="_blank"><b>Ebola-KB</b></a> is available under CC BY 4.0 license in Turtle (TTL) format and can be loaded in a SPARQL triplestore or as an RDFLib Graph.
+                    </p>
+                    <p align="justify">
+                        <b>Citation:</b> Maulik R. Kamdar, Michel Dumontier, An Ebola virus-centered knowledge base, Database, Volume 2015 <a href="https://academic.oup.com/database/article/doi/10.1093/database/bav049/2433182" target="_blank">https://doi.org/10.1093/database/bav049</a>.<br> In the paper, we showcase how different competency questions, asked by domain users researching the druggability of EBOV, can be formulated as SPARQL Queries or answered using the Ebola-KB Dashboard. 
+                    </p>
+                    <hr>
+                    <h4>Model Diagram</h4>
+                    <hr>
+                    <p align="justify">Information retrieved from the EBOV genome sequencing analysis is modelled using the ebola:Gene , ebola:Protein , ebola:Domain and ebola:BindingSite classes. GO Terms are cataloged under the ebola:GoTerm class. Keywords extracted from the protein, domain and GO Terms are listed as instances of the ebola:Keyword class and linked to the associated entity using ebola:hasKeyword object property. Data retrieved using the RCSB PDB REST API is modelled as instances of the ebola:PDBStructure and ebola:Ligand classes, using the extensive set of datatype properties for the ebola:Ligand class. <br>
+                    <hr>
+                    <img src="../static/img/ebolakb/model.png" width="70%" class="imgPadding">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer class="footer" align="center">
+            <p>&copy; <a href="http://www.stanford.edu/~maulikrk" target="_blank">Maulik R. Kamdar</a>, 2015</p>
         </footer>
-    </div>
-  </body>
+    </body>
 </html>
