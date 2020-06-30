@@ -1,0 +1,11 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+        
+SELECT DISTINCT ?title ?bioUri ?identifier ?drugbankUri WHERE {
+    <ID> ebola:hasKeyword ?keyword .
+    ?keyword ebola:x-pdb ?pdbUri .
+    ?pdbUri ebola:hasLigand ?bioUri .
+    ?bioUri ebola:chemicalName ?title .
+    ?bioUri bio2rdf:identifier ?identifier .
+    OPTIONAL {?bioUri ebola:x-drugbank ?drugbankUri}
+}

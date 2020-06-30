@@ -1,0 +1,23 @@
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pubmed:<http://bio2rdf.org/pubmed_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+        
+CONSTRUCT {
+    ID pubmed:Article_Title ?title;
+    pubmed:Abstract ?abstractText ; 
+    pubmed:Article_Date ?articleDate;
+    pubmed:Journal ?journalLabel;
+    pubmed:Author ?author ;
+    pubmed:Mesh_Term ?mesh
+} WHERE {
+    ID rdfs:label ?title;
+        pubmed:abstract ?abstract; pubmed:journal ?journal.
+    ?journal pubmed:journal_title ?journalTitle .
+    OPTIONAL {?abstract pubmed:abstract_text ?abstractText}
+    OPTIONAL {?journal pubmed:journal_volume ?journalVol }
+    OPTIONAL {?journal pubmed:journal_issue ?journalIssue}
+    OPTIONAL {ID pubmed:article_date ?articleDate}
+    OPTIONAL {ID pubmed:author ?author}
+    OPTIONAL {ID pubmed:mesh_descriptor_name ?mesh}
+    BIND(CONCAT(STR(?journalTitle), " - ", IF(BOUND(?journalVol), STR(?journalVol), ""), ":", IF(BOUND(?journalIssue), STR(?journalIssue), ""))  AS ?journalLabel) .
+}

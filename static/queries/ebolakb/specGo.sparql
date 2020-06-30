@@ -1,0 +1,7 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+PREFIX go: <http://www.geneontology.org/go#>
+
+SELECT ?desc ?namespace WHERE {
+    ID rdfs:description ?desc; go:namespace ?namespace
+}

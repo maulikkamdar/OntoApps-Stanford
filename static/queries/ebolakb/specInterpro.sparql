@@ -1,0 +1,10 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+
+SELECT ?s ?start ?stop ?system ?identifier WHERE {
+    ?s ebola:x-interpro ID;
+        ebola:domain-start ?start ; 
+        ebola:domain-stop ?stop; 
+        ebola:domain-system ?system;
+        bio2rdf:identifier ?identifier
+}

@@ -1,0 +1,7 @@
+PREFIX pubmed:<http://bio2rdf.org/pubmed_vocabulary:>
+SELECT DISTINCT ?mesh ?pubmedUri ?title WHERE {
+    ID pubmed:mesh_descriptor_name ?mesh .
+    ?pubmedUri pubmed:mesh_descriptor_name ?mesh; 
+        rdfs:label ?title
+    FILTER (?pubmedUri != ID)
+}

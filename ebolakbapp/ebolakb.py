@@ -1,5 +1,4 @@
 from flask import Flask, Blueprint, render_template, json, request
-from utils import FileUtils
 import os, time, json
 import rdflib
 
@@ -7,6 +6,7 @@ ebolakb = Blueprint('ebolakb', __name__, template_folder='templates')
 app = Flask(__name__)
 
 ebola_data_folder = "static/data/ebolakb/"
+ebola_query_folder = "static/queries/ebolakb/"
 
 a = time.time()
 g = rdflib.Graph()
@@ -15,14 +15,13 @@ print (len(g), "Triples found, ", time.time()-a, " Time taken")
 
 def execute_sparql(sparql_q, _id=None):
     res_array = []
-    with open(ebola_data_folder + "queries/" + sparql_q + ".sparql") as f: 
+    with open(ebola_query_folder + sparql_q + ".sparql") as f: 
         query = f.read()
     if _id:
         print (_id)
         query = query.replace("ID", _id)
     print (query)
     qres = g.query(query)
-
     for row in qres:
         nr = []
         for m in row:

@@ -1,0 +1,9 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+        
+SELECT DISTINCT ?title ?bioUri ?identifier WHERE {
+    <ID> ebola:hasKeyword ?keyword .
+    ?keyword ebola:x-pubmed ?bioUri .
+    ?bioUri rdfs:label ?title;
+    bio2rdf:identifier ?identifier.
+}

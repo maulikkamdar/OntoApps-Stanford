@@ -1,0 +1,20 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+
+CONSTRUCT {
+    ID ebola:Molecular_Weight ?molWeight; ebola:Chemical_Name ?chemicalName;
+    ebola:Smiles_Notation ?smiles; ebola:Molecular_Formula ?formula; ebola:InChI ?inchi;
+    ebola:InChI_Key ?inchiKey; ebola:Chemical_Type ?type;
+    ebola:PDB_Structure ?pdbUri; ebola:PubMedRecord ?pubmedUri;
+    ebola:DrugBank_Drug ?drugbankUri
+} WHERE {
+    ?pdbUri ebola:hasLigand ID .
+    ID ebola:molecularWeight ?molWeight; ebola:chemicalName ?chemicalName; ebola:molecularFormula ?formula
+        OPTIONAL{ID ebola:smilesNotation ?smiles}
+        OPTIONAL{ID ebola:inchi ?inchi}
+        OPTIONAL{ID ebola:inchiKey ?inchiKey}
+        OPTIONAL{ID ebola:chemicalType ?type}
+        OPTIONAL{?pdbUri ebola:x-pubmed ?pubmedUri}
+        OPTIONAL{ID ebola:x-drugbank ?drugbankUri}
+}

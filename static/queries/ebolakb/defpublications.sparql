@@ -1,0 +1,9 @@
+PREFIX ebola:<http://bio2rdf.org/ebola_vocabulary:>
+PREFIX bio2rdf:<http://bio2rdf.org/bio2rdf_vocabulary:>
+PREFIX pubmed:<http://bio2rdf.org/pubmed_vocabulary:>
+
+SELECT DISTINCT ?title ?bioUri ?identifier WHERE {
+    ?bioUri a pubmed:PubMedRecord .
+    ?bioUri rdfs:label ?title;
+    bio2rdf:identifier ?identifier.
+}

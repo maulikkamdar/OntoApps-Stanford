@@ -1,0 +1,13 @@
+PREFIX ebola: <http://bio2rdf.org/ebola_vocabulary:>
+PREFIX go: <http://www.geneontology.org/go#>
+PREFIX bio2rdf: <http://bio2rdf.org/bio2rdf_vocabulary:>
+
+CONSTRUCT {
+    ?interproDomain rdfs:label ?interprolabel.
+    ?goTerm rdfs:label ?golabel; go:namespace ?namespace
+} WHERE {
+    <ID> ebola:domain ?domain.
+    ?domain ebola:x-interpro ?interproDomain .
+    ?interproDomain rdfs:label ?interprolabel.
+    OPTIONAL {?domain ebola:x-go ?goTerm . ?goTerm go:namespace ?namespace; rdfs:label ?golabel}
+}
