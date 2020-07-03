@@ -22,6 +22,7 @@ def execute_sparql(sparql_q, _id=None):
         query = query.replace("ID", _id)
     print (query)
     qres = g.query(query)
+    print (qres)
     for row in qres:
         nr = []
         for m in row:
@@ -49,7 +50,7 @@ def ebolakb_getdata():
     try:
         res_array, query = execute_sparql(dataType, _id) if _id else execute_sparql(dataType)
         resp = {"query": query, "results": res_array, "error": ""}
-    except:
-        resp = {"query": "", "results": "", "error": "Execution error - " + dataType}
+    except e:
+        resp = {"query": "", "results": "", "error": "Execution error - " + str(e)}
     return json.dumps(resp)
 
