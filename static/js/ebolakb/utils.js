@@ -1,17 +1,17 @@
 var storage = (function() {
-    var uid = new Date,
-        storage,
-        result;
-    try {
-      (storage = window.localStorage).setItem(uid, uid);
-      result = storage.getItem(uid) == uid;
-      storage.removeItem(uid);
-      return result && storage;
-    } catch(e) {}
+  var uid = new Date,
+    storage,
+    result;
+  try {
+    (storage = window.localStorage).setItem(uid, uid);
+    result = storage.getItem(uid) == uid;
+    storage.removeItem(uid);
+    return result && storage;
+  } catch (e) {}
 }());
 
 function isInt(value) {
-    return !isNaN(value) &&
+  return !isNaN(value) &&
     parseInt(Number(value)) == value &&
     !isNaN(parseInt(value, 10));
 }
@@ -22,18 +22,18 @@ function isInt(value) {
  */
 
 function normalizeData(data, maximum, minimum, desMax, desMin) {
-	for(i in data){
-		var normalizedValue = desMin + (data[i].value - minimum)*(desMax - desMin)/(maximum - minimum);
-		if(normalizedValue > 50)
-			console.log(data[i].value);
-		data[i].normalizedValue = normalizedValue;
-	}
-	return data;
+  for (i in data) {
+    var normalizedValue = desMin + (data[i].value - minimum) * (desMax - desMin) / (maximum - minimum);
+    if (normalizedValue > 50)
+      console.log(data[i].value);
+    data[i].normalizedValue = normalizedValue;
+  }
+  return data;
 }
 
 function origData(data, maximum, minimum, desMax, desMin) {
-	for(i in data){
-		data[i].normalizedValue = data[i].value*50;
-	}
-	return data;
+  for (i in data) {
+    data[i].normalizedValue = data[i].value * 50;
+  }
+  return data;
 }

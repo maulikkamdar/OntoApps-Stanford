@@ -47,8 +47,8 @@ function createGenericNetwork(data, resourceId, resourceType, resourceLabel) {
 
     // console.log(data);
     for (i in data) {
-        var identifer = data[i][2].substring(1, data[i][2].length-1);
-        var name = data[i][0].substring(1, data[i][0].length-1);
+        var identifer = data[i][2].substring(1, data[i][2].length - 1);
+        var name = data[i][0].substring(1, data[i][0].length - 1);
         var coUrl = 'http://bio2rdf.org/pubmed:' + identifer;
         var node = {
             "id": count,
@@ -95,17 +95,17 @@ function createSpecNetwork(data, resourceId, resourceLabel) {
     nodeLocator[url] = count++;
 
     for (i in data) {
-        mesh = data[i][0].substring(1, data[i][0].length-1)
+        mesh = data[i][0].substring(1, data[i][0].length - 1)
         var meshUri = 'http://bio2rdf.org/meshTerm:' + mesh.toLowerCase();
         var pubmedUri = data[i][1];
         var identifierParts = pubmedUri.split(/[:#\/]/);
         var pubide = identifierParts[identifierParts.length - 1];
-        pubide = pubide.substring(0, pubide.length-1)
+        pubide = pubide.substring(0, pubide.length - 1)
         if (nodeLocator[pubmedUri] != null)
             pubmedLoc = nodeLocator[pubmedUri]
         else {
             var name = data[i][2]
-            name = name.substring(1, name.length-1)
+            name = name.substring(1, name.length - 1)
             var node = {
                 "id": count,
                 "type": "PubMedRecord",

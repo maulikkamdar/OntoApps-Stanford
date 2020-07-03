@@ -124,7 +124,7 @@ function openAnnotationTab(uri, identifier, resourceType, displayType, label) {
 }
 
 function strip_quotes(x) {
-    return x.substring(1, x.length-1)
+    return x.substring(1, x.length - 1)
 }
 
 function displaySpecAnn(resourceType, data, identifier, displayType) {
@@ -134,11 +134,11 @@ function displaySpecAnn(resourceType, data, identifier, displayType) {
         d3.select(selector).append("table").attr("width", "100%").attr("id", displayType + "_table").selectAll("tr").data(data).enter()
             .append("tr").style("border-bottom", "1px solid black")
             .html(function(d) {
-                return "<th align='left'>" + strip_quotes(d[3]) + 
-                        "</th><td align='left'>" + strip_quotes(d[1]) + 
-                        "</td><td align='left'>" + strip_quotes(d[2]) + 
-                        "</td><td align='left'><a href='" + link + strip_quotes(d[4]) + 
-                        "' target='_blank'><i class=\"icon-share icon-black\"></i></a></td>";
+                return "<th align='left'>" + strip_quotes(d[3]) +
+                    "</th><td align='left'>" + strip_quotes(d[1]) +
+                    "</td><td align='left'>" + strip_quotes(d[2]) +
+                    "</td><td align='left'><a href='" + link + strip_quotes(d[4]) +
+                    "' target='_blank'><i class=\"icon-share icon-black\"></i></a></td>";
             });
     } else {
         var link = "http://amigo.geneontology.org/amigo/term/GO:";
@@ -162,8 +162,8 @@ function displaySpec(displayType, data, identifier) {
         .html(function(d) {
             var predicateTerms = d[1].split(/[:#\/]/);
             var predicate = predicateTerms[predicateTerms.length - 1];
-            predicate = predicate.substring(0, predicate.length-1)
-            objt = d[2].substring(1, d[2].length-1)
+            predicate = predicate.substring(0, predicate.length - 1)
+            objt = d[2].substring(1, d[2].length - 1)
             if (predicate == "Mesh_Term") {
                 meshTerms += objt + ", ";
                 return "";
@@ -173,17 +173,17 @@ function displaySpec(displayType, data, identifier) {
             } else if (predicate == "PDB_Structure") {
                 var pdbparts = d[2].split(/[:#\/]/);
                 var pdbIdentifier = pdbparts[pdbparts.length - 1].toUpperCase();
-                pdbIdentifier = pdbIdentifier.substring(0, pdbIdentifier.length-1)
+                pdbIdentifier = pdbIdentifier.substring(0, pdbIdentifier.length - 1)
                 pdbTerms += "<a href='javascript:viewStructure(\"" + pdbIdentifier + "\")'>" + pdbIdentifier + "</a>  <a href='http://www.rcsb.org/pdb/explore.do?structureId=" + pdbIdentifier + "' target='_blank'><i class=\"icon-share icon-black\"></i></a>, "
             } else if (predicate == "DrugBank_Drug") {
                 var drugparts = d[2].split(/[:#\/]/);
                 var drugIdentifier = drugparts[drugparts.length - 1].toUpperCase();
-                drugIdentifier = drugIdentifier.substring(0, drugIdentifier.length-1)
+                drugIdentifier = drugIdentifier.substring(0, drugIdentifier.length - 1)
                 return "<th align='left'>" + predicate + "</th><td align='left'><a href='http://www.drugbank.ca/drugs/" + drugIdentifier + "' target='_blank'>" + drugIdentifier + "  <i class=\"icon-share icon-black\"></i></a>, "
             } else if (predicate == "PubMedRecord") {
                 var pubparts = d[2].split(/[:#\/]/);
                 var pubIdentifier = pubparts[pubparts.length - 1].toUpperCase();
-                pubIdentifier = pubIdentifier.substring(0, pubIdentifier.length-1)
+                pubIdentifier = pubIdentifier.substring(0, pubIdentifier.length - 1)
                 pubmedTerms += "<a href=\"javascript:openTab('<http://bio2rdf.org/pubmed:" + pubIdentifier + ">','" + pubIdentifier + "','publications')\">" + pubIdentifier + "</a>  <a href='http://www.ncbi.nlm.nih.gov/pubmed/" + pubIdentifier + "' target='_blank'><i class=\"icon-share icon-black\"></i></a>, ";
             } else {
                 return "<th align='left'>" + predicate + "</th><td align='left'>" + objt + "</td>"
@@ -219,7 +219,7 @@ function displayOther(displayType, data, resourceId) {
         .html(function(d) {
             var predicateTerms = d[1].split(/[:#\/]/);
             var predicate = predicateTerms[predicateTerms.length - 1];
-            predicate = predicate.substring(0, predicate.length-1)
+            predicate = predicate.substring(0, predicate.length - 1)
 
             var subjectTerms = d[0].split(/[:#\/]/);
             var subject = subjectTerms[subjectTerms.length - 1];
@@ -231,7 +231,7 @@ function displayOther(displayType, data, resourceId) {
                 } else {
                     var goTerm = {
                         'uri': d[0],
-                        'identifier': subject.substring(0, subject.length-1),
+                        'identifier': subject.substring(0, subject.length - 1),
                         'namespace': '',
                         'label': ''
                     };
@@ -239,9 +239,9 @@ function displayOther(displayType, data, resourceId) {
                     goTermLocator[subject] = goTerms.length - 1;
                 }
                 if (predicate == "namespace")
-                    goTerm.namespace = d[2].substring(1, d[2].length-1);
+                    goTerm.namespace = d[2].substring(1, d[2].length - 1);
                 else
-                    goTerm.label = d[2].substring(1, d[2].length-1);
+                    goTerm.label = d[2].substring(1, d[2].length - 1);
             } else if (subjectType == "interpro") {
                 if (interproTermLocator[subject] != null) {
                     var interproTerm = interproTerms[interproTermLocator[subject]];
@@ -249,8 +249,8 @@ function displayOther(displayType, data, resourceId) {
                 } else {
                     var interproTerm = {
                         'uri': d[0],
-                        'identifier': subject.substring(0, subject.length-1),
-                        'label': d[2].substring(1, d[2].length-1)
+                        'identifier': subject.substring(0, subject.length - 1),
+                        'label': d[2].substring(1, d[2].length - 1)
                     };
                     interproTerms.push(interproTerm);
                     interproTermLocator[subject] = interproTerms.length - 1;

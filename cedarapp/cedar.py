@@ -141,7 +141,7 @@ def cedar_h2questions():
 
 @cedar.route("/cedar/h1submit", methods=['POST'])
 def cedar_h1submit():
-    print request.form
+    print (request.form)
     _user = request.form['user_id']
     rows = {}
     for k in request.form:
@@ -165,7 +165,7 @@ def cedar_h1submit():
 
 @cedar.route("/cedar/h2submit", methods=['POST'])
 def cedar_h2submit():
-    print request.form
+    print (request.form)
     _user = request.form['user_id']
     rows = {}
     for k in request.form:
