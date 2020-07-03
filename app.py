@@ -2,6 +2,7 @@ from flask import Flask, render_template, json, request
 import logging
 from waitress import serve
 from ebolakbapp.ebolakb import ebolakb
+from cedarapp.cedar import cedar
 
 app = Flask(__name__)
 app.register_blueprint(ebolakb)
