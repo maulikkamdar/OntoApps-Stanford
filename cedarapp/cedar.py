@@ -47,15 +47,15 @@ def get_options(qid):
 
 def print_refined():
     for k in opt1:
-        print k["text"]
-        print "------------"
+        print (k["text"])
+        print ("------------")
         for m in k["options"]:
-            print "---", m["optid"], m["label"], m["ontology"]
+            print ("---", m["optid"], m["label"], m["ontology"])
     for k in opt2:
-        print k["text"]
-        print "------------"
+        print (k["text"])
+        print ("------------")
         for m in k["options"]:
-            print "---", m["optid"], m["label"], m["ontology"]
+            print ("---", m["optid"], m["label"], m["ontology"])
 
 
 opt1 = []
