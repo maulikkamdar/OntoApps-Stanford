@@ -47,15 +47,15 @@ def get_options(qid):
 
 def print_refined():
     for k in opt1:
-        print (k["text"])
-        print ("------------")
+        print(k["text"])
+        print("------------")
         for m in k["options"]:
-            print ("---", m["optid"], m["label"], m["ontology"])
+            print("---", m["optid"], m["label"], m["ontology"])
     for k in opt2:
-        print (k["text"])
-        print ("------------")
+        print(k["text"])
+        print("------------")
         for m in k["options"]:
-            print ("---", m["optid"], m["label"], m["ontology"])
+            print("---", m["optid"], m["label"], m["ontology"])
 
 
 opt1 = []
@@ -141,7 +141,7 @@ def cedar_h2questions():
 
 @cedar.route("/cedar/h1submit", methods=['POST'])
 def cedar_h1submit():
-    print (request.form)
+    print(request.form)
     _user = request.form['user_id']
     rows = {}
     for k in request.form:
@@ -165,7 +165,7 @@ def cedar_h1submit():
 
 @cedar.route("/cedar/h2submit", methods=['POST'])
 def cedar_h2submit():
-    print (request.form)
+    print(request.form)
     _user = request.form['user_id']
     rows = {}
     for k in request.form:
